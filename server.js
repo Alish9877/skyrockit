@@ -35,24 +35,24 @@ app.use(passUsertoView)
 
 // require controllers 
 const authCtrl = require('./controllers/auth')
-
-
-// use controller 
-app.use('/auth' , authCtrl)
-
-// app.use(express.static('public'));
-
+const applicationCtrl = require('./controllers/applications')
 
 // root route
 app.get('/' , async (req,res) => {
-res.render('index.ejs')
-})
+  if (req.session.user){
+    res.redirect(`/users/${req.session.user._id}/applications`)
+  } else {
+  res.render('index.ejs')}
+  })
+  
+
+// use controller 
+app.use('/auth' , authCtrl)
+app.use(isSignedIn)
+app.use('/users/:useId/applications' , applicationCtrl)
+// app.use(express.static('public'));
 
 
-// vip lounge
-app.get('/vip-lounge' , isSignedIn , (req,res) => {
-res.send(`Welcome to the party ${req.session.user.username}`)
-})
 
 app.listen(PORT , () => {
   console.log(`Listening on port ${PORT}`)

@@ -3,19 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <title>Skyrockit</title>
 </head>
 <body>
-  <% if(user)  { %>
-  <p>Hi <%=user.username%></p>
-  <a href="/auth/sign-out">Sign out</a>
-  <% } else {%>
-    <div class="auth-links">
-      <a href="/auth/sign-up">Sign up</a>
-      <a href="/auth/sign-in">Sign in</a>
-    </div>
-  <%}%>
-  <a href="/vip-lounge" class="vip-lounge">Get into the VIP users only lounge!</a>
+  <%- include('./partials/_navbar.ejs')%>
   <h1>Welcome to the app!</h1>
+  <p>A jop application tracker</p>
 </body>
 </html>

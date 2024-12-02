@@ -1,0 +1,12 @@
+<body>
+  
+<% if(user)  { %>
+  <p>Hi <%=user.username%></p>
+  <a href="/users/<%= user._id %>/applications">Your Applications</a>
+  <% } else {%>
+    <div class="auth-links">
+      <a href="/auth/sign-up">Sign up</a>
+      <a href="/auth/sign-in">Sign in</a>
+    </div>
+  <%}%>
+</body>
